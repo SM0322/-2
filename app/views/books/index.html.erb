@@ -10,58 +10,51 @@
   </head>
 
 <body>
- <h1 class="top-title">Books</h1>
+ <h1 class="title">Books</h1>
 
- <div class="index-box">
+ <table border="0">
+  <tr>
+   <th>Title</th>
+   <th>Body</th>
+  </tr>
 
-  <div class="box-content">
-   <p class="box-title">Title</p>
-   <% @books.each do |book| %>
-    <span>
-     <p class="box-content-text"><%= book.title %></p>
-    </span>
-   <% end %>
-  </div>
+  <tr>
+   <td>
+    <% @books.each do |book| %>
+     <span>
+      <p class="table-text"><%= book.title %></p>
+     </span>
+   </td>
 
-  <div class="box-content">
-   <p class="box-title">Body</p>
-   <% @books.each do |book| %>
-    <span>
-     <p class="box-content-text"><%= book.body %></p>
-    </span>
-   <% end %>
-  </div>
+   <td>
+     <span>
+      <p class="table-text"><%= book.body %></p>
+     </span>
+   </td>
 
-  <div class="box-content">
-   <p class="index-box-title">a</p>
-   <% @books.each do |book| %>
-    <span>
-     <p class="box-content-text"><%= link_to "Show", book_path(book.id) %></p>
-    </span>
-   <% end %>
-  </div>
+   <td>
+     <span>
+      <p class="table-text"><%= link_to "Show", book_path(book.id) %></p>
+     </span>
+   </td>
 
-  <div class="box-content">
-   <p class="index-box-title">b</p>
-   <% @books.each do |book| %>
-    <span>
-     <p class="box-content-text"><%= link_to "Edit", edit_book_path(book.id) %></p>
-    </span>
-   <% end %>
-  </div>
+   <td>
+     <span>
+      <p class="table-text"><%= link_to "Edit", edit_book_path(book.id) %></p>
+     </span>
+   </td>
 
-  <div class="box-content">
-   <p class="index-box-title">c</p>
-   <% @books.each do |book| %>
-    <span>
-     <p class="box-content-text"><%= link_to "Destroy", book_path(book.id), method: :delete %></p>
-    </span>
-   <% end %>
-  </div>
- </div>
+   <td>
+     <span>
+      <p class="table-text"><%= link_to "Destroy", book_path(book.id), method: :delete %></p>
+     </span>
+    <% end %>
+   </td>
+  </tr>
+ </table>
 
 
-<h1 class="new-title">New book</h1>
+<h1 class="title">New book</h1>
 <% if @book.errors.any? %>
   <%= @book.errors.count %> errors prohibited this book from being saved:
   <ul>
@@ -70,20 +63,19 @@
     <% end %>
   </ul>
 <% end %>
-
 <%= form_with model: @book, url:'/books', method: :post  do |f| %>
 
-  <div class="new-box">
+  <div class="table-text">
     <h4>Title</h4>
     <%= f.text_field:title %>
   </div>
 
-  <div class="new-box">
-    <h4 class="new-field">Body</h4>
+  <div class="table-text">
+    <h4>Body</h4>
     <%= f.text_area:body %>
   </div>
 
-  <div class="new-box">
+  <div class="table-text">
     <%= f.submit 'Create Book' %>
   </div>
 
