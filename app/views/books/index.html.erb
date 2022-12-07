@@ -1,25 +1,67 @@
-<h1>Books</h1>
+<div>
+  <%= flash[:notice] %>
+</div>
 
-<% @books.each do |book| %>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Bookers</title>
+  </head>
 
- <p>Title</p>
- <span>
-  <%= book.title %>
- </span>
+<body>
+ <h1 class="top-title">Books</h1>
 
- <p>Body</p>
- <span>
-  <%= book.body %>
- </span>
+ <div class="index-box">
 
- <%= link_to "Show", book_path(book.id) %>
- <%= link_to "Edit", book_path(book.id) %>
- <%= link_to "Destroy", book_path(book.id), method: :delete %>
+  <div class="box-content">
+   <p class="box-title">Title</p>
+   <% @books.each do |book| %>
+    <span>
+     <p class="box-content-text"><%= book.title %></p>
+    </span>
+   <% end %>
+  </div>
 
-<% end %>
+  <div class="box-content">
+   <p class="box-title">Body</p>
+   <% @books.each do |book| %>
+    <span>
+     <p class="box-content-text"><%= book.body %></p>
+    </span>
+   <% end %>
+  </div>
+
+  <div class="box-content">
+   <p class="index-box-title">a</p>
+   <% @books.each do |book| %>
+    <span>
+     <p class="box-content-text"><%= link_to "Show", book_path(book.id) %></p>
+    </span>
+   <% end %>
+  </div>
+
+  <div class="box-content">
+   <p class="index-box-title">b</p>
+   <% @books.each do |book| %>
+    <span>
+     <p class="box-content-text"><%= link_to "Edit", edit_book_path(book.id) %></p>
+    </span>
+   <% end %>
+  </div>
+
+  <div class="box-content">
+   <p class="index-box-title">c</p>
+   <% @books.each do |book| %>
+    <span>
+     <p class="box-content-text"><%= link_to "Destroy", book_path(book.id), method: :delete %></p>
+    </span>
+   <% end %>
+  </div>
+ </div>
 
 
-<h1>New book</h1>
+<h1 class="new-title">New book</h1>
 <% if @book.errors.any? %>
   <%= @book.errors.count %> errors prohibited this book from being saved:
   <ul>
@@ -31,12 +73,19 @@
 
 <%= form_with model: @book, url:'/books', method: :post  do |f| %>
 
-  <h4>Title</h4>
-  <%= f.text_field:title %>
+  <div class="new-box">
+    <h4>Title</h4>
+    <%= f.text_field:title %>
+  </div>
 
-  <h4>Body</h4>
-  <%= f.text_area:body %>
+  <div class="new-box">
+    <h4 class="new-field">Body</h4>
+    <%= f.text_area:body %>
+  </div>
 
-  <%= f.submit 'Create Book' %>
+  <div class="new-box">
+    <%= f.submit 'Create Book' %>
+  </div>
 
 <% end %>
+</body>
